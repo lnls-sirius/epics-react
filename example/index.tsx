@@ -39,8 +39,8 @@ root.render(
     <Wrapper>
       <InvisibleDoc/>
     </Wrapper>
-    <Wrapper>
+    {/* <Wrapper>
       <ChartDoc/>
-    </Wrapper>
+    </Wrapper> */}
   </div>
 )

@@ -1,4 +1,4 @@
-import EpicsBase from "../components/epics";
+import EpicsBase from "../controllers/epics_con";
 
 describe('Epics Base Class', () => {
   const base_threshold = {

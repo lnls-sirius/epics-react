@@ -33,8 +33,8 @@ const ChartDoc: React.FC = () => {
                     ADD PVs
             </button>
             <SiriusChart
-                pv_name={["RAD:Berthold:TotalDoseRate:Dose",
-                    "RAD:ELSE:TotalDoseRate:Dose", "RAD:Berthold:TotalDoseRate:Dose",
+                pv_name={["RAD:Thermo1:TotalDoseRate:Dose",
+                    "RAD:ELSE:TotalDoseRate:Dose", "RAD:Thermo1:TotalDoseRate:Dose",
                     "RAD:ELSE:TotalDoseRate:Dose"]}
                 label={[['SI','MI'], 'SO', 'RAD', 'SWC']}
                 color_label={pvs}

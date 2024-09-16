@@ -1,9 +1,3 @@
-type RefChart = React.RefObject<HTMLCanvasElement>
-
-interface State<T> {
-    value: T
-}
-
 interface Dict<T> {
     [key: string]: T
 }
@@ -15,6 +9,12 @@ interface PvTooltipInterface{
 
 interface PvListInterface {
     pv_list: Array<string>
+}
+
+interface BarChartParameters{
+    color: Dict<string>
+    label: (string|string[])[],
+    thresholdLines: any[]
 }
 
 interface ChartPv
@@ -60,13 +60,12 @@ interface LedPv
 export type {
     PvListInterface,
     ChartPv,
+    BarChartParameters,
     PvInterface,
     EpicsData,
     PvTooltipInterface,
     LabelPv,
     LedStatus,
     LedPv,
-    State,
-    Dict,
-    RefChart
+    Dict
 }

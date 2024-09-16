@@ -22,7 +22,8 @@ const InvisibleDoc: React.FC = () => {
         <div>
             <Wrapper>
                 An Invisible Widget to monitor 1 or several PVs:
-                <SiriusInvisible pv_name={["RAD:Thermo1:Gamma", "RAD:Thermo2:Gamma"]} modifyValue={valueList}/>
+                <SiriusInvisible pv_name={["SI-01BCFE:VA-CCG-MD:Pressure-Mon", "RAD:Thermo2:Gamma"]} modifyValue={valueList}/>
+                <SiriusInvisible pv_name={["SI-02C3:VA-CCG-BG:Pressure-Mon", "SI-04C3:VA-CCG-BG:Pressure-Mon"]} modifyValue={valueList}/>
                 {Object.entries(values).map(([key, value]: [string, any])=>{
                     return (
                         <div>

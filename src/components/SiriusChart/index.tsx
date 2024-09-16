@@ -1,6 +1,6 @@
 import React, { Component, createRef } from "react";
 import Chart  from 'chart.js/auto';
-import EpicsBase from "../epics";
+import EpicsBase from "../../controllers/epics_base";
 import { default_colors } from "../../assets/themes";
 import { Dict, ChartPv, RefChart, EpicsData } from "../../assets/interfaces";
 import { chartOptions } from "./options";

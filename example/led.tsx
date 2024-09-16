@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import SiriusLed from '../src/components/SiriusLed';
 
@@ -11,9 +11,10 @@ const Wrapper = styled.div`
 `
 
 const LedDoc: React.FC = () => {
+    const [state, setState] = useState<boolean>(false);
     const threshold1 = {
-        'alert': 0.06,
-        'alarm': 0.6
+        'alert': 0.4,
+        'alarm': 0.06
     }
 
     const threshold2 = {
@@ -27,17 +28,27 @@ const LedDoc: React.FC = () => {
         'alarm': 0.7
     }
 
+    const color1 = {
+        'alert': 'radial-gradient(#f8ff1b, #a29800)',
+        'som': '#000000',
+        'alarm': 'radial-gradient(#ff1b1b, #a20000)'
+    }
+
+    const color2 = {
+        'alert': 'radial-gradient(#ff1b1b, #a200ff)',
+        'som': '#ffffff',
+        'alarm': 'radial-gradient(#f8ff1b, #ff98ff)'
+    }
+
     return (
         <div>
+            <button onClick={()=>{setState(!state)}}>Change Led Colors</button>
             <Wrapper>
-                Square led (square): <SiriusLed pv_name="RAD:ELSE:Gamma" shape={'square'} threshold={threshold1} disc_time={60000}/>
-                Square with round borders(squ_circ): <SiriusLed pv_name="RAD:ELSE:Gamma" shape={'squ_circ'} threshold={threshold2} color={{
-                    'alert': 'radial-gradient(#f8ff1b, #a29800)',
-                    'som': '#000000',
-                    'alarm': 'radial-gradient(#ff1b1b, #a20000)'
-                }}/>
-                Circle led (circle): <SiriusLed pv_name="RAD:ELSE:Gamma" shape={'circle'} threshold={threshold3} disc_time={60000}/>
-                Led with disconnection handler: <SiriusLed pv_name="RAD:Berthold:TotalDoseRate:Dose" shape={'circle'} disc_time={1500}/>
+                Square led (square): <SiriusLed pv_name={state?"SI-01BCFE:VA-CCG-MD:Pressure-Mon":"SI-01SA:VA-CCG-BG:Pressure-Mon"} shape={'square'} threshold={threshold1} disc_time={60000}/>
+                Square with round borders(squ_circ): <SiriusLed pv_name="SI-02C3:VA-CCG-BG:Pressure-Mon" shape={'squ_circ'}
+                    threshold={state?threshold1:threshold2} color={state?color1:color2}/>
+                Circle led (circle): <SiriusLed pv_name="SI-02C3:VA-CCG-BG:Pressure-Mon" shape={'circle'} threshold={threshold3} disc_time={60000}/>
+                Led with disconnection handler: <SiriusLed pv_name={state?"SI-02C3:VA-CCG-BG:Pressure-Mon":"RAD:Thermo1:Gamma"} shape={'circle'} disc_time={2000}/>
             </Wrapper>
         </div>
     )
